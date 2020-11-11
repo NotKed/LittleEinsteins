@@ -1,84 +1,158 @@
-.carousel .item {
-    height: 300px;
-  }
-  
-.item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 300px;
+.navbar a {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 30px;
 }
 
 .login-dark {
-    height:1000px;
-    background:#475d62 url(../../assets/img/star-sky.jpg);
-    background-size:cover;
-    position:relative;
-  }
-  
-  .login-dark form {
-    max-width:320px;
-    width:90%;
-    background-color:#1e2833;
-    padding:40px;
-    border-radius:4px;
-    transform:translate(-50%, -50%);
-    position:absolute;
-    top:50%;
-    left:50%;
-    color:#fff;
-    box-shadow:3px 3px 4px rgba(0,0,0,0.2);
-  }
-  
-  .login-dark .illustration {
-    text-align:center;
-    padding:15px 0 20px;
-    font-size:100px;
-    color:#2980ef;
-  }
-  
-  .login-dark form .form-control {
-    background:none;
-    border:none;
-    border-bottom:1px solid #434a52;
-    border-radius:0;
-    box-shadow:none;
-    outline:none;
-    color:inherit;
-  }
-  
-  .login-dark form .btn-primary {
-    background:#214a80;
-    border:none;
-    border-radius:4px;
-    padding:11px;
-    box-shadow:none;
-    margin-top:26px;
-    text-shadow:none;
-    outline:none;
-  }
-  
-  .login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
-    background:#214a80;
-    outline:none;
-  }
-  
-  .login-dark form .forgot {
-    display:block;
-    text-align:center;
-    font-size:12px;
-    color:#6f7a85;
-    opacity:0.9;
-    text-decoration:none;
-  }
-  
-  .login-dark form .forgot:hover, .login-dark form .forgot:active {
-    opacity:1;
-    text-decoration:none;
-  }
-  
-  .login-dark form .btn-primary:active {
-    transform:translateY(1px);
-  }
-  
-  
+  height:1000px;
+  background:#475d62 url(../../assets/img/star-sky.jpg);
+  background-size:cover;
+  position:relative;
+}
+
+.login-dark form {
+  max-width:320px;
+  width:90%;
+  background-color:#1e2833;
+  padding:40px;
+  border-radius:4px;
+  transform:translate(-50%, -50%);
+  position:absolute;
+  top:50%;
+  left:50%;
+  color:#fff;
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+}
+
+.login-dark .illustration {
+  text-align:center;
+  padding:15px 0 20px;
+  font-size:100px;
+  color:#2980ef;
+}
+
+.login-dark form .form-control {
+  background:none;
+  border:none;
+  border-bottom:1px solid #434a52;
+  border-radius:0;
+  box-shadow:none;
+  outline:none;
+  color:inherit;
+}
+
+.login-dark form .btn-primary {
+  background:#214a80;
+  border:none;
+  border-radius:4px;
+  padding:11px;
+  box-shadow:none;
+  margin-top:26px;
+  text-shadow:none;
+  outline:none;
+}
+
+.login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
+  background:#214a80;
+  outline:none;
+}
+
+.login-dark form .forgot {
+  display:block;
+  text-align:center;
+  font-size:12px;
+  color:#6f7a85;
+  opacity:0.9;
+  text-decoration:none;
+}
+
+.login-dark form .forgot:hover, .login-dark form .forgot:active {
+  opacity:1;
+  text-decoration:none;
+}
+
+.login-dark form .btn-primary:active {
+  transform:translateY(1px);
+}
+
+.centerphoto {
+  border: 2px solid black;
+}
+
+.centerlogo {
+  margin-top: -15%;
+  margin-left: 50%;
+  height: 30%;
+  transform: translate(-50%, -50%);
+}
+
+#whoarewe h1 {
+  font-family: 'Bebas Neue', curisve;
+  margin: 50px 42% 0% 50%;
+  transform: translate(-50%, -50%);
+}
+
+#whoarewe p#goals {
+  font-family: 'Poppins', curisve;
+  margin-top: 10px;
+  margin-left: 25%;
+  width: 50%;
+  /* transform: translate(-50%, -50%); */
+}
+
+#whoarewe p#facilities {
+  font-family: 'Poppins', curisve;
+  margin-top: 10px;
+  margin-left: 25%;
+  width: 50%;
+  margin-bottom: 25px;
+}
+
+.classes {
+  margin-bottom: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 300px;
+}
+
+@media (max-width: 34em) {
+    body {
+      margin-bottom: 500px;
+    }
+    .footer {
+      height: 500px;
+    }
+}
+
+footer {
+  padding-top: 30px;
+  background-color: white;
+  color: #bbb;
+}
+
+footer a {
+  color: #999;
+  text-decoration:none;
+}
+
+footer a:hover, footer a:focus {
+  color: #aaa;
+  text-decoration:none;
+  border-bottom:1px dotted #999;
+}
+
+footer .form-control {
+    background-color: white;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    border: none;
+    resize: none;
+    color: #d1d2d2;
+    padding: 0.7em 1em;
+}

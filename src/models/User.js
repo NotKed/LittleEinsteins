@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-let SALT_WORK_FACTOR = 10;
+const SALT_WORK_FACTOR = 10;
+const passportLocalMognoose = require('passport-local-mongoose');
 
 let userSchema = new mongoose.Schema({
     id: Number,
@@ -33,6 +34,7 @@ userSchema.methods.verifyPassword = async function (candidatePassword) {
     })
 }
 
+userSchema.plugin(passportLocalMognoose);
 let User = mongoose.model('user', userSchema);
 
 module.exports = User;

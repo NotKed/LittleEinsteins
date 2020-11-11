@@ -1,3 +1,5 @@
+const Class = require('../models/Class');
+const helper = require('../structure/Logger');
 module.exports = function(app, passport) {
     
     app.get('/', (req, res) => {
@@ -14,12 +16,19 @@ module.exports = function(app, passport) {
     });
 
     app.get('/admin', isAuthenticated, (req, res) => {
-        res.render('admin');
+        // helper.log(`${req.ip} connected the admin panel.`);
+        res.render('dashboard/admin');
+    })
+
+    app.get('/admin/classes', isAuthenticated, async (req, res) => {
+        let data = await Class.find().lean();
+        res.render('dashboard/classes', {
+            classes: data
+        });
     })
 }
 
 function isAuthenticated(req, res, next) {
-    console.log(req.isAuthenticated());
     if(req.isAuthenticated()) next();
     else res.redirect("/login");
 }

@@ -12,6 +12,9 @@ const FileStore = require('session-file-store')(session);
 const cookieParser = require('cookie-parser');
 const chalk = require('chalk')
 const figlet = require('figlet');
+const Class = require('./models/Class');
+const Child = require('./models/Child');
+const moment = require('moment');
 
 const app = express();
 
@@ -74,6 +77,22 @@ async function ready() {
         helper.log(`App just loaded ${dir}`);
     }
 
+    const c = await Class.findOne( { name: "Babies"} );
+    let dd = await Child.findOne({name: "Kyle Edwards"});
+    // let d = new Child();
+    // d.id = 1;
+    // d.name = 'Kyle Edwards';
+    // d.age = 17;
+    // d.class = c;
+    // d.parentName = 'Janice Edwards';
+    // d.parentNumber = '0861951179';
+    // d.parentEmail = 'janice@littleeinsteins.ie';
+    // d.address = '32 The Pines, Bridgemount, Carrigaline, Co Cork';
+    // d.dateOfBirth = '03/10/2003';
+    // d.registered = moment();
+    // d.save();
+    // c.children = [dd]
+    // c.save();
 }
 
 mongoose.connect(`mongodb://localhost:27017/${config.database}`, {

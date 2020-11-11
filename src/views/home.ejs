@@ -6,36 +6,75 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <title>Little Einsteins Daycare Centre</title>
+    <script src="https://kit.fontawesome.com/0eead3232b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="shadow p-3 mb-5 bg-white rounded">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/"><img src="logo.png" style="width: 90px; height:40px"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#facilities">Facilites</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#staff">Staff</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact us</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <%- include('include/header.ejs') -%> 
+
+    <div class="centerphoto">
+        <img src="img/caro1.png" alt="">
+        <!-- <h1>Little Einsteins Daycare Centre</h1> -->
+        <img class="centerlogo" src="img/logo.png">
+    </div>
+    <div id="whoarewe">
+        <h1 id="aboutus">our goals</h1>
+        <p id="goals">To provide the highest standards of professional care for your child, we believe your child's well-being is of paramount importance. The staff and management at Little Einsteins rcognise that all children are individuals in their own right and have different needs, abilities and potential. We will ensure that we will be flexible and sensitive in responding to these needs. Working in partnership with parents is one of our primary concerns.</p>
+        <h1 id="aboutus">facilites</h1>
+        <p id="facilities">● Little Einsteins Children's Learning Certnre is a two story building specifically designed to adhere to the HSE South Guidelines and most importantly to your child's needs.<br>● Our baby, wobbler, toddler and pre-schoolers rooms are bright and comfortable and designed to cater for the needs of each age group. <br>● Fully equipped Montessori/After-schoolers rooms.<br>● Caring and qualified staff.<br>● Your child's nutrious meals will be cooked daily on the premises by our qualified chefs, who will adhere to HACCAP regulations.<br>● Strict security policy with fingerprint access at front door only accessible to Parent/Guardians and a visual intercom system with internal access doors controlled by key staff members.<br>● 24/7 recording CCTV system both internally and externally.<br>● Two secure outdoor soft play areas to ensure safety while at play.<br>● Large private car park for drop off and collection.<br>● Drop off and collection from Carrigalien schools for after-schoolers.<br>● Located next to Carrigaline Community School in Waterpark.</p>
     </div>
 
-    <img src="snow.jpg">
+    <hr style="width: 30%; border-top: 0.2px solid black;">
+
+    <div id="classes">
+        <h1 class="text-center" id="ourclasses" style="font-family: 'Bebas Neue', cursive; margin-top: 20px;">OUR CLASSES</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <img class="card-img-top" src="img/caro1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Baby Room (3 months - 1 year)</h5>
+                            <p class="card-text">Our baby room has been methodically set out for your baby's comfort. We provide places for babies from 3 months old. Our goal is to make both mother and baby feel totally comfortable and adhere as much as possible to you and your baby's needs/routine. This room will be eqqipped to develop your babies gross and fine motor skills and the development of hearing, speech, social & play. Our staff will work very closely with you to ease the settling in period. Communication at this stage is key to an easy transition. The baby room has a seperate sleep room attached to the main room fitted with black out blinds and has a visual panel from the main room. Each baby will have its own cot. There is direct access from the baby room to the outdoor soft play areas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img class="card-img-top" src="img/caro1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Wobblers Room (1 - 2 years)</h5>
+                            <p class="card-text">Now that your child is becoming more mobile they will progress to our Wobbler room. Their great need to explore and investigate the world and their surroundings will be actively encouraged in a safe enviorment. Activies such as threading, sorting and block building are introducted to further develop their fine motor skills. Through the use of story-time your child's vocabulary and early understanding of symbols is extended which is a vital skill in the development of reading and writing. There is also designated sleep room for the wobblers directly attached with visual panel. Each child has a different sleep pattern and we will accommodate these with flexibility. There is direct access from the Wobbler room to the outside soft play areas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-100 d-none d-md-block"></div>
+                <div class="col">
+                    <div class="card">
+                        <img class="card-img-top" src="img/caro1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Pre-schoolers room (3 - 5 years)</h5>
+                            <p class="card-text">Your child will move up-stairs to our large pre-schooler room as they can now independently negotiate the stairs. The pre-schooler room will adopt the High Scope curriculum approach; this actively involves your child in decision about their learning and fosters responsibility and independence. High Scope is characterised by the following themes, the daily routine, room and equipment organisation, key terms, concepts and experience and the role of the adult. The room is arranged for particular activites in distinct work areas, e.g book area, construction area, home area and art area. The pre-schoolers will also benefit from a daily-allocated time in the Montessori room, which is located adjacent to the Pre-schoolers room.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img class="card-img-top" src="img/caro1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Montessori Room (3 - 5 years)</h5>
+                            <p class="card-text">Our Montessori school is carefully organised so that the children have the maximum opportunity for hands on experience. In this prepared enviorment, the child will discover and understand basic concepts for themselves through the user of the practical, sensorial, cultural, language and arithmetic materials. All qeuipment is child sized and at a level which enables the children to select their own material. There is no time limit to the exploration of these matierals, the children continue until satisfied. The role of the Montessori teacher is to keep your child's interest through guiding but also to withdraw so that the children do things for themselves and develop a sense of independence and self-confidence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <%- include('include/footer.ejs') -%> 
+            
+    </div>
+
 </body>
 </html>
