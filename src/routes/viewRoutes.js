@@ -37,7 +37,7 @@ module.exports = function(app, passport) {
         let children = await Child.find().lean();
         let users = await User.find().lean();
         let reports = null;
-        res.render('dashboard/class', { 
+        res.render('dashboard/class/class', { 
             classID: req.params.classID,
             user: req.user,
             classes: classes,
@@ -47,12 +47,12 @@ module.exports = function(app, passport) {
         });
     })
 
-    app.get('/admin/class/:classID/edit', isAuthenticated, async (req, res) => {
+    app.get('/admin/editClass/:classID', isAuthenticated, async (req, res) => {
         let classes = await Class.find().lean();
         let children = await Child.find().lean();
         let users = await User.find().lean();
         let reports = null;
-        res.render('dashboard/classEdit', { 
+        res.render('dashboard/class/classEdit', { 
             classID: req.params.classID,
             user: req.user,
             classes: classes,
@@ -67,8 +67,21 @@ module.exports = function(app, passport) {
         let children = await Child.find().lean();
         let users = await User.find().lean();
         let reports = null;
-        res.render('dashboard/newClass', { 
-            classID: req.params.classID,
+        res.render('dashboard/class/newClass', { 
+            user: req.user,
+            classes: classes,
+            children: children,
+            users: users,
+            reports: reports
+        });
+    });
+
+    app.get('/admin/newchild', isAuthenticated, async (req, res) => {
+        let classes = await Class.find().lean();
+        let children = await Child.find().lean();
+        let users = await User.find().lean();
+        let reports = null;
+        res.render('dashboard/child/newChild', { 
             user: req.user,
             classes: classes,
             children: children,
@@ -82,7 +95,7 @@ module.exports = function(app, passport) {
         let children = await Child.find().lean();
         let users = await User.find().lean();
         let reports = null;
-        res.render('dashboard/classes', { 
+        res.render('dashboard/class/classes', { 
             user: req.user,
             classes: classes,
             children: children,
@@ -96,7 +109,7 @@ module.exports = function(app, passport) {
         let children = await Child.find().lean();
         let users = await User.find().lean();
         let reports = null;
-        res.render('dashboard/children', {
+        res.render('dashboard/child/children', {
             user: req.user,
             classes: classes,
             children: children,
@@ -111,7 +124,7 @@ module.exports = function(app, passport) {
         let users = await User.find().lean();
         let reports = null;
         let data = await Child.findOne({id: req.params.childID}).lean();
-        res.render('dashboard/child', {
+        res.render('dashboard/child/child', {
             user: req.user,
             classes: classes,
             children: children,

@@ -20,11 +20,11 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <%- include('include/nav.ejs') %> 
+  <%- include('../include/nav.ejs') %> 
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <%- include('include/sidenav.ejs') %> 
+  <%- include('../include/sidenav.ejs') %> 
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -71,7 +71,7 @@
                             Class Name
                         </th>
                         <th style="width: 30%">
-                            Children
+                            Training Level
                         </th>
                         <th>
                             Occupancy
@@ -99,20 +99,7 @@
                                 </small>
                             </td>
                             <td>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar2.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar3.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar04.png">
-                                    </li>
-                                </ul>
+                                <%= classes[i].trainingLevel %> 
                             </td>
                             <td class="project_progress">
                                 <div class="progress progress-sm">
@@ -136,12 +123,12 @@
                                     </i>
                                     View
                                 </a>
-                                <a class="btn btn-info btn-sm" href="/admin/class/<%= classes[i].id %>/edit">
+                                <a class="btn btn-info btn-sm" href="/admin/editClass/<%= classes[i].id %>">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="#">
+                                <a class="btn btn-danger btn-sm" href="/admin/deleteClass/<%= classes[i].id %>">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
@@ -160,7 +147,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <%- include('include/footer.ejs') %> 
+  <%- include('../include/footer.ejs') %> 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

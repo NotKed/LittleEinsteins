@@ -20,11 +20,11 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <%- include('include/nav.ejs') %> 
+  <%- include('../include/nav.ejs') %> 
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <%- include('include/sidenav.ejs') %> 
+  <%- include('../include/sidenav.ejs') %> 
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -49,6 +49,32 @@
     <section class="content">
 
       <!-- Default box -->
+      <div class="row">
+        <div class="col-12 col-sm-4">
+          <div class="info-box bg-light">
+            <div class="info-box-content">
+              <span class="info-box-text text-center text-muted">Age Group</span>
+              <span class="info-box-number text-center text-muted mb-0"><%= classes[classID].age %></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4">
+          <div class="info-box bg-light">
+            <div class="info-box-content">
+              <span class="info-box-text text-center text-muted">Occupancy</span>
+              <span class="info-box-number text-center text-muted mb-0"><%= classes[classID].children.length %>/<%= classes[classID].capacity %></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4">
+          <div class="info-box bg-light">
+            <div class="info-box-content">
+              <span class="info-box-text text-center text-muted">Training Level</span>
+              <span class="info-box-number text-center text-muted mb-0"><%= classes[classID].trainingLevel %><span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="card card-solid">
         <div class="card-body pb-0">
           <div class="row d-flex align-items-stretch">
@@ -104,7 +130,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <%- include('include/footer.ejs') %> 
+  <%- include('../include/footer.ejs') %> 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

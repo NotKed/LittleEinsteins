@@ -1,11 +1,13 @@
 /**
- * TODO:
+ * TODO: FIXME: (DONE) (IN PROGRESS)
+ * 
+ * TODO: 
  * - migrate to adminlte login page (DONE)
  * - remember me feature with login (DONE)
  * - add classes page (taken from AdminLTE Projects) (DONE)
- * - update class info (capacity, age to progress, stafF:child ratio, operating hours, staff training level) (IN PROGRESS)
+ * - update class info (capacity, age to progress, stafF:child ratio, operating hours, staff training level) (DONE)
  * - setup new child and new class pages (DONE)
- * - class occupancy and projected occupancies
+ * - class occupancy and projected occupancies (IN PROGRESS)
  * - sync class details to website home page, photos can remain static, descriptions, capacity etc can pull from db
  * - attendance records per childNodes
  * - attendance records per class

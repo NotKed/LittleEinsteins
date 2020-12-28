@@ -20,11 +20,11 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <%- include('include/nav.ejs') %> 
+  <%- include('../include/nav.ejs') %> 
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <%- include('include/sidenav.ejs') %> 
+  <%- include('../include/sidenav.ejs') %> 
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -35,7 +35,12 @@
           <div class="col-sm-6">
             <h1>Children</h1>
           </div>
+          
           <div class="col-sm-6">
+            <a class="btn btn-success btn-sm" href="/admin/newchild">
+                <i class="fas fa-plus"></i>
+                New
+            </a>
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin">Home</a></li>
               <li class="breadcrumb-item active">Children</li>
@@ -44,6 +49,7 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+    
 
     <!-- Main content -->
     <section class="content">
@@ -74,11 +80,13 @@
                     </tbody>
                   <% } %>  
                 </table>
+                
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
+          
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -86,7 +94,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <%- include('include/footer.ejs') %> 
+  <%- include('../include/footer.ejs') %> 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -20,11 +20,11 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <%- include('include/nav.ejs') %> 
+  <%- include('../include/nav.ejs') %> 
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <%- include('include/sidenav.ejs') %> 
+  <%- include('../include/sidenav.ejs') %> 
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -57,27 +57,27 @@
 							<div class="card-body">
 								<div class="form-group">
 									<label for="inputName">ID</label>
-									<input type="text" name="id" class="form-control" id="inputName" value="<%= classes.length+1 %>" readonly>
+									<input type="text" name="classID" class="form-control" id="inputName" value="<%= classes.length %>" readonly>
 								</div>
 								<div class="form-group">
 									<label for="inputName">Class Name</label>
-									<input name="name" type="text" id="inputName" class="form-control">
+									<input name="name" type="text" id="inputName" class="form-control" required>
 								</div>
 								<div class="form-group">
 									<label for="inputDescription">Class Description</label>
-									<textarea name="description" id="inputDescription" class="form-control" rows="4"></textarea>
+									<textarea name="description" id="inputDescription" class="form-control" rows="4" required></textarea>
 								</div>
 								<div class="form-group">
 									<label for="inputCapacity">Capacity</label>
-									<input name="capacity" type="number" id="inputCapacity" class="form-control">
+									<input name="capacity" type="number" id="inputCapacity" class="form-control" required>
 								</div>
 								<div class="form-group">
 									<label for="inputAge">Class Age</label>
-									<input name="age" type="number" id="inputAge" class="form-control">
+									<input name="age" type="number" id="inputAge" class="form-control" required>
 								</div>
 								<div class="form-group">
 									<label for="inputProjectLeader">Training Level</label>
-									<input name="trainingLevel" type="text" id="inputTrainingLevel" class="form-control">
+									<input name="trainingLevel" type="text" id="inputTrainingLevel" class="form-control" required>
 								</div>
 							</div>
 							<!-- /.card-body -->
@@ -114,7 +114,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <%- include('include/footer.ejs') %> 
+  <%- include('../include/footer.ejs') %> 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

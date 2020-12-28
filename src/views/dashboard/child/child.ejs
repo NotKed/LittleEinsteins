@@ -20,11 +20,11 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <%- include('include/nav.ejs') %> 
+  <%- include('../include/nav.ejs') %> 
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <%- include('include/sidenav.ejs') %> 
+  <%- include('../include/sidenav.ejs') %> 
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -150,7 +150,7 @@
                     <div class="col-sm-10">
                       <select name="class" class="form-control" id="inputClass" value="<%= child.class.name %>">
                         <% for(var i = 0; i < classes.length; i++) { %> 
-                          <% if(child.class.id = classes[i].id) { %>
+                          <% if(child.class.id == classes[i].id) { %>
                             <option class="item" data-value="<%= classes[i].id %> " selected><%= classes[i].name %></option>
                           <% } else { %>
                             <option class="item" data-value="<%= classes[i].id %> "><%= classes[i].name %></option>
@@ -186,15 +186,16 @@
                   <div class="form-group row">
                     <label for="inputNotes" class="col-sm-2 col-form-label">Notes</label>
                     <div class="col-sm-10">
-                      <textarea name="notes" class="form-control" id="inputNotes"><%= child.notes %></textarea>
+                      <textarea name="notes" class="form-control" id="inputNotes" rows="4"><%= child.notes %></textarea>
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Update</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                   </div>
                 </form>
+                <a href="/admin/deleteChild/<%= child.id %> "><button class="btn btn-danger">Delete</button></a>
               </div><!-- /.card-body -->
             </div>
             <!-- /.nav-tabs-custom -->
@@ -207,7 +208,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <%- include('include/footer.ejs') %> 
+  <%- include('../include/footer.ejs') %> 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
