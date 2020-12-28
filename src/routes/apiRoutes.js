@@ -61,16 +61,12 @@ module.exports = function (app, passport) {
         if (oldClass.name != req.body.class) { // if the class remains the same, we don't need to update the class
             var index; // the index of which the user is in the class' children array
             oldClass.children.forEach(async (classChild) => {
-                console.log(classChild.id);
-                console.log(child.id)
                 if(classChild.id == child.id) {
                     index = oldClass.children.indexOf(classChild);
-                    console.log(index)
                 }
             });
 
             oldClass.children.splice(index, 1);
-            console.log(oldClass.children)
             await Class.updateOne({id: oldClass.id}, {children: oldClass.children}) // remove the child from the old class
         }
 
@@ -191,11 +187,9 @@ module.exports = function (app, passport) {
         helper.log(`${req.user.username} just deleted child ${req.params.childID}`)
 
         let child = await Child.findOne({id: req.params.childID});
-        console.log(child)
 
         let classes = await Class.find();
         classes.forEach(async (qClass) => {
-            console.log(qClass)
             if(qClass.children.includes(child)) await Class.updateOne({id: qClass.id}, {children: qClass.children.splice(qClass.children.indexOf(child), 1)});
         });
 
