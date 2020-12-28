@@ -52,7 +52,7 @@ module.exports = function(app, passport) {
         let children = await Child.find().lean();
         let users = await User.find().lean();
         let reports = null;
-        res.render('dashboard/class', { 
+        res.render('dashboard/classes', { 
             user: req.user,
             classes: classes,
             children: children,
