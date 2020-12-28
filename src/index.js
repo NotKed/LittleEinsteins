@@ -1,3 +1,47 @@
+/**
+ * TODO:
+ * - migrate to adminlte login page
+ * - remember me feature with login
+ * - add classes page
+ * - update class info (capacity, age to progress, stafF:child ratio, operating hours, staff training level)
+ * - setup new child and new class pages
+ * - class occupancy and projected occupancies
+ * - sync class details to website home page, photos can remain static, descriptions, capacity etc can pull from db
+ * - attendance records per childNodes
+ * - attendance records per class
+ * - child reports, day to day, eating, etc.
+ * - report forms, accident, e.t.c.
+ * - schedules (school pickup/drop-off) 
+ * - admin access management, creation of new users, managing user permissions
+ * - update staff information (training level, pay, address, contact info, garda vetting, e.t.c)
+ * - staff sign in and out
+ * - staff rosters
+ * - gallery feature, allow staff to upload photos of their class to a gallery, admin can control access
+ * - migrate parent details from child to seperate model
+ * - mass email, text to parents (specific groups such as classes or all parents)
+ * - creche details, opening hours available on website
+ * - allow website customizability through admin panel
+ * - begin android app (view as a webpage instead of creating app if required)
+ * - print to device (use local IPs)
+ * - conversations between staff
+ * - storage tracker (see whats in stock)
+ * - parent log in to oversee children
+ * - parents able to update childs info (require approval by admin prior to updating database)
+ * - parent contact forms viewable by admin (or staff should admin decide) 
+ * - parental access to certain pages (child info, class gallery, staff info (specific to class teachers))
+ * - parents can start conversations with staff/admin (remove need of text messages)
+ * - parents can add notes to child
+ * - parents can manage child scheduele (notify of drop-off cancellation etc.)
+ * - parents can manage childs hours (where occupancy is available) (admin approval required)
+ * - parents able to register (to view occupancy, class informations)
+ * - staff application forms online, get sent to admin(s) (apply for staff, customizable by admin)
+ * - child registration online, submit instead of child application
+ * - begin work on IOS app (same as android, use webpage if needed)
+ * - IOS app focus on mainly parental features, staff use tablets mainly (invalid if emulating browser)
+ * FIXME:
+ * 
+ */
+
 const express = require('express');
 const config = require('../config.json');
 const mongoose = require('mongoose');
@@ -17,6 +61,18 @@ const Child = require('./models/Child');
 const moment = require('moment');
 
 const app = express();
+
+let fileStoreOptions = {};
+
+app.use(session({
+    secret: config.sessionSecret,
+    resave: true,
+    saveUninitialized: true,
+    store: new FileStore(fileStoreOptions),
+    cookie: {
+        maxAge: 24 * 60 * 60 * 365 * 1000
+    }
+}));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -48,25 +104,13 @@ passport.deserializeUser((id, cb) => {
     });
 });
 
-let fileStoreOptions = {};
-
-app.use(session({
-    secret: config.sessionSecret,
-    resave: true,
-    saveUninitialized: true,
-    store: new FileStore(fileStoreOptions),
-    cookie: {
-        maxAge: 24 * 60 * 60 * 365 * 1000
-    }
-}));
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 async function ready() {
 
     console.log("-------------------------------------------------------------------------------------------------");
-    console.log(chalk.green(figlet.textSync('Little Einsteins', { horizontalLayout: 'full' })));
+    console.log(chalk.green(figlet.textSync('LE API', { horizontalLayout: 'full' })));
     console.log("-------------------------------------------------------------------------------------------------");
     console.log(chalk.white('-'), chalk.red("Port:"), chalk.white(config.port));
     console.log(chalk.white('-'), chalk.red("Database:"), chalk.white(config.database));
@@ -76,23 +120,6 @@ async function ready() {
         require(`./routes/${dir}`)(app, passport);
         helper.log(`App just loaded ${dir}`);
     }
-
-    const c = await Class.findOne( { name: "Babies"} );
-    let dd = await Child.findOne({name: "Kyle Edwards"});
-    // let d = new Child();
-    // d.id = 1;
-    // d.name = 'Kyle Edwards';
-    // d.age = 17;
-    // d.class = c;
-    // d.parentName = 'Janice Edwards';
-    // d.parentNumber = '0861951179';
-    // d.parentEmail = 'janice@littleeinsteins.ie';
-    // d.address = '32 The Pines, Bridgemount, Carrigaline, Co Cork';
-    // d.dateOfBirth = '03/10/2003';
-    // d.registered = moment();
-    // d.save();
-    // c.children = [dd]
-    // c.save();
 }
 
 mongoose.connect(`mongodb://localhost:27017/${config.database}`, {

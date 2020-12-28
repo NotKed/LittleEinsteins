@@ -10,7 +10,8 @@ let userSchema = new mongoose.Schema({
     admin: {
         type: Boolean,
         default: false
-    }
+    },
+    access: []
 });
 
 userSchema.pre('save', function(next) {

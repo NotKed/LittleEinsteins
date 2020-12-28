@@ -1,7 +1,10 @@
 const ContactForm = require('../models/ContactForm');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
+const Class = require('../models/Class');
 const helper = require('../structure/Logger');
+const Child = require('../models/Child');
+const User = require('../models/User');
 
 module.exports = function (app, passport) {
     app.post('/login',
@@ -43,4 +46,35 @@ module.exports = function (app, passport) {
 
         res.redirect('/');
     });
+
+    app.post('/updatechild', async (req, res) => {
+        let child = await Child.findOne({id: req.body.id}).lean();
+        let newClass = await Class.findOne({name: req.body.class}).lean();
+
+        let oldClass = await Class.findOne({name: child.class.name}).lean();
+        oldClass.children.pop(child);
+
+        let newChild = await Child.updateOne({id: req.body.id}, {
+            name: req.body.name,
+            address: req.body.address,
+            parentNumber: req.body.parentNumber,
+            parentName: req.body.parentName,
+            parentEmail: req.body.parentEmail,
+            class: newClass,
+            dateOfBirth: req.body.dateOfBirth,
+            age: calcAge(req.body.dateOfBirth),
+            notes: req.body.notes
+        });
+
+        newClass.children.push(newChild);
+        
+        console.log(req.body);
+        res.redirect('back');
+    })
+
 }
+
+function calcAge(dateString) {
+    var birthday = +new Date(dateString);
+    return ~~((Date.now() - birthday) / (31557600000));
+  }

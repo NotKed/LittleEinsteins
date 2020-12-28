@@ -11,7 +11,8 @@ let childSchema = new mongoose.Schema({
     parentEmail: String,
     address: String,
     dateOfBirth: String,
-    registered: Date
+    registered: Date,
+    notes: String
 });
 
 let Child = mongoose.model('kid', childSchema);

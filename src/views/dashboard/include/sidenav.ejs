@@ -1,35 +1,70 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="sidebar-sticky pt-3">
-      <ul class="nav flex-column">
-        <li class="nav-item"><a class="nav-link" href="/admin">
-          <i class="fas fa-home"></i>
-            Dashboard
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="/admin" class="brand-link">
+    <img src="../../dist/img/logo.png" alt="Logo" class="brand-image img-circle elevation-3"
+         style="opacity: .8">
+    <span class="brand-text font-weight-light">Little Einsteins</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="info">
+        <a href="/admin" class="d-block"><%= user.username %></a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="/admin" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Dashboard
+            </p>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/classes">
-            <i class="fas fa-book"></i>
-            Classes
+          <a href="/admin/children" class="nav-link">
+            <i class="nav-icon fas fa-baby"></i>
+            <p>
+              Children
+            </p>
           </a>
         </li>
+        <% for(var i = 0; i<classes.length; i++) { %> 
+          <% if(user.access.includes(classes[i].name)) { %>
+            <li class="nav-header"><%= classes[i].name %> </li>
+            <li class="nav-item">
+              <a href="/admin/class/<%= classes[i].id %>" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Class
+                </p>
+              </a>
+            </li> 
+            <li class="nav-item">
+              <a href="/admin/class/<%= classes[i].id %>/attendance" class="nav-link">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>
+                  Attendance
+                </p>
+              </a>
+            </li>
+          <% } %> 
+        <% } %> 
+        <li class="nav-header">Reports</li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/children">
-            <i class="fas fa-child"></i>
-            Children
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/admin/users">
-            <i class="fas fa-users"></i>
-            Admins
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/admin/contacts">
-            <i class="fas fa-envelope"></i>
-            Contact Forms
+          <a href="https://adminlte.io/docs/3.0" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>Documentation</p>
           </a>
         </li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
