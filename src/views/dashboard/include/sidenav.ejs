@@ -41,6 +41,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="/admin/class" class="nav-link">
+            <i class="nav-icon fas fa-house-user"></i>
+            <p>
+              Classes
+            </p>
+          </a>
+        </li>
         <% for(var i = 0; i<classes.length; i++) { %> 
           <% if(user.access.includes(classes[i].name)) { %>
             <li class="nav-header"><%= classes[i].name %> </li>

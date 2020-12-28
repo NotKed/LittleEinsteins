@@ -2,9 +2,9 @@
  * TODO:
  * - migrate to adminlte login page (DONE)
  * - remember me feature with login (DONE)
- * - add classes page (taken from AdminLTE Projects)
- * - update class info (capacity, age to progress, stafF:child ratio, operating hours, staff training level)
- * - setup new child and new class pages
+ * - add classes page (taken from AdminLTE Projects) (DONE)
+ * - update class info (capacity, age to progress, stafF:child ratio, operating hours, staff training level) (IN PROGRESS)
+ * - setup new child and new class pages (DONE)
  * - class occupancy and projected occupancies
  * - sync class details to website home page, photos can remain static, descriptions, capacity etc can pull from db
  * - attendance records per childNodes

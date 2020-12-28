@@ -47,6 +47,36 @@ module.exports = function(app, passport) {
         });
     })
 
+    app.get('/admin/class/:classID/edit', isAuthenticated, async (req, res) => {
+        let classes = await Class.find().lean();
+        let children = await Child.find().lean();
+        let users = await User.find().lean();
+        let reports = null;
+        res.render('dashboard/classEdit', { 
+            classID: req.params.classID,
+            user: req.user,
+            classes: classes,
+            children: children,
+            users: users,
+            reports: reports
+        });
+    })
+
+    app.get('/admin/newclass', isAuthenticated, async (req, res) => {
+        let classes = await Class.find().lean();
+        let children = await Child.find().lean();
+        let users = await User.find().lean();
+        let reports = null;
+        res.render('dashboard/newClass', { 
+            classID: req.params.classID,
+            user: req.user,
+            classes: classes,
+            children: children,
+            users: users,
+            reports: reports
+        });
+    });
+
     app.get('/admin/class', isAuthenticated, async (req, res) => {
         let classes = await Class.find().lean();
         let children = await Child.find().lean();
