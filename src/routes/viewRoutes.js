@@ -45,6 +45,21 @@ module.exports = function(app, passport) {
             users: users,
             reports: reports
         });
+    });
+
+    app.get('/admin/classAttendance/:classID', isAuthenticated, async (req, res) => {
+        let classes = await Class.find().lean();
+        let children = await Child.find().lean();
+        let users = await User.find().lean();
+        let reports = null;
+        res.render('dashboard/class/classAttendance', { 
+            classID: req.params.classID,
+            user: req.user,
+            classes: classes,
+            children: children,
+            users: users,
+            reports: reports
+        });
     })
 
     app.get('/admin/editClass/:classID', isAuthenticated, async (req, res) => {

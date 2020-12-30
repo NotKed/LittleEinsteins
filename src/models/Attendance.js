@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Child = require('./Child').schema;
 
-let attendanceSchema = new mongoose.Schema({
+let classAttendanceSchema = new mongoose.Schema({
     date: Date,
-    child: Child,
+    class: Child,
     attendance: Boolean
 });
 
-let Attendance = mongoose.model('attendance', attendanceSchema);
+let Attendance = mongoose.model('classAttendance', classAttendanceSchema);
 
 module.exports = Attendance;

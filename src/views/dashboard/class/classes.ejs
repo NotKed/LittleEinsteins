@@ -112,10 +112,11 @@
                             <td class="project-state">
                                 <% if(classes[i].children.length >= classes[i].capacity) { %>
                                     <span class="badge badge-danger">Full</span> 
-                                <% } else { %>
+                                <% } else if((classes[i].capacity - classes[i].children.length) < 4) { %>
+                                    <span class="badge badge-warning">Limited Spaces Available</span>
+                                <% } else { %> 
                                     <span class="badge badge-success">Spaces Available</span>
                                 <% } %> 
-                                
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="/admin/class/<%= classes[i].id %> ">
