@@ -3,6 +3,8 @@ const helper = require('../structure/Logger');
 const Child = require('../models/Child');
 const User = require('../models/User');
 const moment = require('moment');
+const Attendance = require('../models/Attendance');
+
 module.exports = function(app, passport) {
     
     app.get('/', (req, res) => {
@@ -51,7 +53,20 @@ module.exports = function(app, passport) {
         let classes = await Class.find().lean();
         let children = await Child.find().lean();
         let users = await User.find().lean();
+        let attendanceRecords = await Attendance.find().lean();
         let reports = null;
+
+        let attendances = {};
+
+        // loop thorugh last 31 days using moment, find attendances for 
+        // children in these days, add to 'attendances' for sorting
+        // in the attendance view.
+        const currentMoment = moment().subtract(31, 'days');
+        while (currentMoment.isBefore(moment(), 'day')) {
+            attendances[currentMoment.date()] = await Attendance.find({date: currentMoment}).lean();
+            currentMoment.add(1, 'days');
+        }
+
         res.render('dashboard/class/classAttendance', { 
             classID: req.params.classID,
             user: req.user,
