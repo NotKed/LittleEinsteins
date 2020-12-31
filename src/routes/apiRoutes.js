@@ -107,6 +107,7 @@ module.exports = function (app, passport) {
         newChild.parentNumber = req.body.parentNumber;
         newChild.age = calcAge(req.body.dateOfBirth);
         newChild.address = req.body.address;
+        newChild.registered = moment();
         if(req.body.notes) newChild.notes = req.body.notes;
 
         await Class.updateOne({name: req.body.class}, {children: chosenClass.children.push(newChild)})
