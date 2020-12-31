@@ -7,6 +7,7 @@ let userSchema = new mongoose.Schema({
     id: Number,
     username: String,
     password: String,
+    name: String,
     admin: {
         type: Boolean,
         default: false

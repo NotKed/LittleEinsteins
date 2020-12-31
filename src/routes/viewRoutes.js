@@ -73,7 +73,8 @@ module.exports = function(app, passport) {
             classes: classes,
             children: children,
             users: users,
-            reports: reports
+            reports: reports,
+            attendances: attendances
         });
     })
 

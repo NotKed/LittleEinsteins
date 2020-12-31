@@ -61,7 +61,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!--TODO: complete attendance table -->
+							<% for( let i = 0; i < attendances.length; i++ ) { %>
+								<% if (i !== new Date().getDate()) break; %>
+								<% for( let j = 0; j < attendances[i].length; j++ ) { %>
+									<!-- attendances[i][j] will be the child on where i is the day of the month -->
+									<tr>
+										<td><%= attendances[i][j].child.name %> </td>
+										<td><%= attendances[i][j].present %> </td>
+										<td><%= attendances[i][j].signInTime %> </td>
+										<td><%= attendances[i][j].signOutTime %> </td>
+										<td><%= attendances[i][j].staffMember.name %> </td>
+									</tr>
+								<% } %>
+							<% } %>
 						</tbody>
 					</table>
 				</div>
