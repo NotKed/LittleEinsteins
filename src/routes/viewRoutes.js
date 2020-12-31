@@ -67,6 +67,11 @@ module.exports = function(app, passport) {
             currentMoment.add(1, 'days');
         }
 
+        // we'll use day to show the attendances, day can be changed later on in the html side
+        // where the ?day= will change what day of attendance is shown
+        // day goes from the current day of the month (ex. 21st) to 31 days before that day (day varies by month)
+        var day = req.query.day ? req.query.day : moment().date()
+
         res.render('dashboard/class/classAttendance', { 
             classID: req.params.classID,
             user: req.user,
@@ -74,7 +79,8 @@ module.exports = function(app, passport) {
             children: children,
             users: users,
             reports: reports,
-            attendances: attendances
+            attendances: attendances[day],
+            day: day
         });
     })
 

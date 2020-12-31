@@ -58,21 +58,31 @@
 								<th>Sign In Time</th> 
 								<th>Sign Out Time</th>
 								<th>Staff Member</th>
+								<th></th>
+								<th>Day: <%= day %> </th>
 							</tr>
 						</thead>
 						<tbody>
-							<% for( let i = 0; i < attendances.length; i++ ) { %>
-								<% if (i !== new Date().getDate()) break; %>
-								<% for( let j = 0; j < attendances[i].length; j++ ) { %>
-									<!-- attendances[i][j] will be the child on where i is the day of the month -->
+							<!--
+								because we use the day variable on the express side, we don't need to 
+								loop through the attendances twice like we would've.
+								here we can just loop through attendances because all the objects inside
+								there will be the ones for the day we're currently displaying.
+
+								TODO: make this table into a form also, where if the day provided
+								is today, the staff can update todays attendance, however if it is
+								not today that they are looking at, leave it blank
+							-->
+							<% if(attendances) { %> 
+								<% for(let i = 0; i < attendances.length; i++) { %>
 									<tr>
-										<td><%= attendances[i][j].child.name %> </td>
-										<td><%= attendances[i][j].present %> </td>
-										<td><%= attendances[i][j].signInTime %> </td>
-										<td><%= attendances[i][j].signOutTime %> </td>
-										<td><%= attendances[i][j].staffMember.name %> </td>
+										<td><%= attendances[i].child.name %> </td>
+										<td><%= attendances[i].present %> </td>
+										<td><%= attendances[i].signInTime %> </td>
+										<td><%= attendances[i].signOutTime %> </td>
+										<td><%= attendances[i].staffMember.name %> </td>
 									</tr>
-								<% } %>
+								<% } %> 
 							<% } %>
 						</tbody>
 					</table>

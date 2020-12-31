@@ -7,10 +7,12 @@
  * - add classes page (taken from AdminLTE Projects) (DONE)
  * - update class info (capacity, age to progress, stafF:child ratio, operating hours, staff training level) (DONE)
  * - setup new child and new class pages (DONE)
- * - class occupancy and projected occupancies (IN PROGRESS)
+ * - class occupancy and projected occupancies
  * - sync class details to website home page, photos can remain static, descriptions, capacity etc can pull from db
- * - attendance records per childNodes
- * - attendance records per class
+ * - attendance records per child
+ * - attendance records per class (IN PROGRESS)
+ *  - make the current days attendance a form so that staff can update it on that day
+ *    maybe if the user is an admin they can edit the attendance no matter what the day
  * - child reports, day to day, eating, etc.
  * - report forms, accident, e.t.c.
  * - schedules (school pickup/drop-off) 
