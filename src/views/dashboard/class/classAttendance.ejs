@@ -49,6 +49,17 @@
 	<section class="content">
 		<div class="row">
 			<div class="col-lg-12">
+				<div class="float-right" style="padding-right: 20px;">
+					<select name="" id="" onchange="location.href = `?page=${this.value}`">
+						<% for( let i = 1; i < 32; i++ ) { %>
+							<% if (i == day) { %>
+								<option selected><%= i %> </option>
+							<% } else { %>
+								<option><%= i %> </option>
+							<% } %> 
+						<% } %>
+					</select>
+				</div>
 				<div class="table-responsive">
 					<table class="table table-striped custom-table mb-0">
 						<thead>
@@ -58,8 +69,6 @@
 								<th>Sign In Time</th> 
 								<th>Sign Out Time</th>
 								<th>Staff Member</th>
-								<th></th>
-								<th>Day: <%= day %> </th>
 							</tr>
 						</thead>
 						<tbody>
@@ -73,14 +82,14 @@
 								is today, the staff can update todays attendance, however if it is
 								not today that they are looking at, leave it blank
 							-->
-							<% if(attendances) { %> 
-								<% for(let i = 0; i < attendances.length; i++) { %>
+							<% if(attendances && attendances[day]) { %> 
+								<% for(let i = 0; i < attendances[day].length; i++) { %>
 									<tr>
-										<td><%= attendances[i].child.name %> </td>
-										<td><%= attendances[i].present %> </td>
-										<td><%= attendances[i].signInTime %> </td>
-										<td><%= attendances[i].signOutTime %> </td>
-										<td><%= attendances[i].staffMember.name %> </td>
+										<td><%= attendances[day][i].child.name %> </td>
+										<td><%= attendances[day][i].present %> </td>
+										<td><%= attendances[day][i].signInTime %> </td>
+										<td><%= attendances[day][i].signOutTime %> </td>
+										<td><%= attendances[day][i].staffMember.name %> </td>
 									</tr>
 								<% } %> 
 							<% } %>

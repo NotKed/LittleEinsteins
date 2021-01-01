@@ -79,7 +79,7 @@ module.exports = function(app, passport) {
             children: children,
             users: users,
             reports: reports,
-            attendances: attendances[day],
+            attendances: attendances,
             day: day
         });
     })
@@ -167,13 +167,12 @@ module.exports = function(app, passport) {
             children: children,
             users: users,
             reports: reports,
-            child: data,
-            moment: moment
+            child: data
         });
     });
 }
 
 function isAuthenticated(req, res, next) {
-    if(req.isAuthenticated()) next();
+    if(req.isAuthenticated() && req.user.admin) next();
     else res.redirect("/login");
 }
