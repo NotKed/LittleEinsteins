@@ -239,3 +239,6 @@ Log - Jan-7-2021 | 19:59:4:Connected to mongodb://localhost:27017/littleeinstein
 Log - Jan-7-2021 | 23:41:33:App just loaded apiRoutes.js
 Log - Jan-7-2021 | 23:41:33:App just loaded viewRoutes.js
 Log - Jan-7-2021 | 23:41:33:Connected to mongodb://localhost:27017/littleeinsteins
+Log - Jan-7-2021 | 23:52:59:App just loaded apiRoutes.js
+Log - Jan-7-2021 | 23:52:59:App just loaded viewRoutes.js
+Log - Jan-7-2021 | 23:52:59:Connected to mongodb://localhost:27017/littleeinsteins

@@ -7,10 +7,9 @@
  * - add classes page (taken from AdminLTE Projects) (DONE)
  * - update class info (capacity, age to progress, stafF:child ratio, operating hours, staff training level) (DONE)
  * - setup new child and new class pages (DONE)
- * - class occupancy and projected occupancies
+ * - class occupancy and projected occupancies (IN PROGRESS)
  * - sync class details to website home page, photos can remain static, descriptions, capacity etc can pull from db
- * - attendance records per child
- * - attendance records per class (IN PROGRESS)
+ * - attendance records per class (DONE)
  *  - make the current days attendance a form so that staff can update it on that day
  *    maybe if the user is an admin they can edit the attendance no matter what the day
  * - child reports, day to day, eating, etc.
@@ -18,7 +17,7 @@
  * - schedules (school pickup/drop-off) 
  * - admin access management, creation of new users, managing user permissions
  * - update staff information (training level, pay, address, contact info, garda vetting, e.t.c)
- * - staff sign in and out
+ * - staff sign in and out (clock in/out roster)
  * - staff rosters
  * - gallery feature, allow staff to upload photos of their class to a gallery, admin can control access
  * - migrate parent details from child to seperate model
