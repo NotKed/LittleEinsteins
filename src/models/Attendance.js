@@ -11,13 +11,15 @@ const Class = require('./Class').schema;
  */
 
 let classAttendanceSchema = new mongoose.Schema({
+    id: Number,
     present: Boolean,
     date: String,
     signInTime: Date,
     signOutTime: Date,
     staffMember: User,
     class: Class,
-    child: Child
+    child: Child,
+    dailyNotes: String
 });
 
 let Attendance = mongoose.model('classAttendance', classAttendanceSchema);

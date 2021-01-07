@@ -71,7 +71,6 @@ module.exports = function(app, passport) {
         // day goes from the current day of the month (ex. 21st) to 31 days before that day (day varies by month)
         var day = req.query.page ? req.query.page : moment().date();
 
-
         res.render('dashboard/class/classAttendance', { 
             classID: req.params.classID,
             user: req.user,
@@ -82,6 +81,50 @@ module.exports = function(app, passport) {
             attendances: attendances[day],
             day: day,
             moment: moment
+        });
+    })
+
+    app.get('/admin/records/newAttendance', isAuthenticated, async (req, res) => {
+        let classes = await Class.find().lean();
+        let children = await Child.find().lean();
+        let users = await User.find().lean();
+        let reports = null;
+
+        let day = req.query.day ? req.query.day : moment().date()
+        let date;
+        if(req.query.day) {
+            // since req.query.day is not present, this means it's not today.
+            // we can use this to tell us whether or not it's this month or not.
+            // what we can do is, check if req.query.day is greater than moment().date, if so it's last month.
+
+            if(req.query.day > moment().date()) { 
+                //this tells us it's last month.
+                if(moment().month() == 0) {
+                    // this is if the month is jan
+                    // in which case we have to go back a year.
+                    date = moment([moment().year()-1, 11, req.query.day]);
+                } else {
+                    date = moment([moment().year(), moment().month()-1, req.query.day]);
+                }
+            } else {
+                date = moment([moment().year(), moment().month(), req.query.day])
+            }
+        } else {
+            date = moment();
+        }
+
+        date = date.format("YYYY-MM-DD");
+        console.log(date)
+
+        res.render('dashboard/records/newAttendance', { 
+            classID: req.query.class,
+            user: req.user,
+            classes: classes,
+            children: children,
+            users: users,
+            reports: reports,
+            day: day,
+            date: date
         });
     })
 

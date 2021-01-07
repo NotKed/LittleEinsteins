@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Little Einsteins | Management</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <%- include('../include/nav.ejs') %> 
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <%- include('../include/sidenav.ejs') %> 
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+			<form action="/editClass" method="post">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Edit <%= classes[classID].name %> Class</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/class/<%= classes[classID].id %>"><%= classes[classID].name %></a></li>
+                                <li class="breadcrumb-item"><a href="/admin/classAttendance/<%= classID %> ">Class Attendance</a></li>
+                                <li class="breadcrumb-item active">Attendance Record</li>
+							</ol>
+						</div>
+					</div>
+				</div><!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card card-primary">
+							<div class="card-header">
+								<h3 class="card-title">Current Information</h3>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<label for="inputName">ID</label>
+									<p><%= classID %></p>
+								</div>
+								<div class="form-group">
+									<label for="inputName">Class Name</label>
+									<p><%= classes[classID].name %></p>
+								</div>
+								<div class="form-group">
+									<label for="inputDescription">Class Description</label>
+									<p><%= classes[classID].description %></p>
+								</div>
+								<div class="form-group">
+									<label for="inputCapacity">Capacity</label>
+									<p><%= classes[classID].capacity %></p>
+								</div>
+								<div class="form-group">
+									<label for="inputAge">Class Age Group</label>
+									<p><%= classes[classID].age %></p>
+								</div>
+								<div class="form-group">
+									<label for="inputProjectLeader">Training Level</label>
+									<p><%= classes[classID].trainingLevel %></p>
+								</div>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+					<div class="col-md-6">
+						<div class="card card-primary">
+							<div class="card-header">
+								<h3 class="card-title">Edit</h3>
+							</div>
+							<div class="card-body">
+								<div class="form-group">
+									<label for="inputName">ID</label>
+									<input type="text" name="classID" class="form-control" id="inputName" value="<%= classes[classID].id %>" readonly>
+								</div>
+								<div class="form-group">
+									<label for="inputName">Class Name</label>
+									<input name="name" type="text" id="inputName" class="form-control" value="<%= classes[classID].name %>">
+								</div>
+								<div class="form-group">
+									<label for="inputDescription">Class Description</label>
+									<textarea name="description" id="inputDescription" class="form-control" rows="4"><%= classes[classID].description %></textarea>
+								</div>
+								<div class="form-group">
+									<label for="inputCapacity">Capacity</label>
+									<input name="capacity" type="number" id="inputCapacity" class="form-control" value="<%= classes[classID].capacity %>">
+								</div>
+								<div class="form-group">
+									<label for="inputAge">Class Age Group</label>
+									<input name="age" type="number" id="inputAge" class="form-control" value="<%= classes[classID].age %>">
+								</div>
+								<div class="form-group">
+									<label for="inputProjectLeader">Training Level</label>
+									<input name="trainingLevel" type="text" id="inputTrainingLevel" class="form-control" value="<%= classes[classID].trainingLevel %>">
+								</div>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<a href="/admin/class/<%= classes[classID].id %> " class="btn btn-secondary">Cancel</a>
+						<button type="submit" class="btn btn-success float-right">Update Class</button>
+					</div>
+				</div>
+			</form>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <%- include('../include/footer.ejs') %> 
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard.js"></script>
+</body>
+</html>

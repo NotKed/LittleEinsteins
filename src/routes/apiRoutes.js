@@ -5,6 +5,7 @@ const Class = require('../models/Class');
 const helper = require('../structure/Logger');
 const Child = require('../models/Child');
 const User = require('../models/User');
+const Attendance = require('../models/Attendance');
 
 module.exports = function (app, passport) {
     app.post('/login',
@@ -200,6 +201,30 @@ module.exports = function (app, passport) {
             if(child.id > req.params.childID) await Child.updateOne({id: child.id}, {id: child.id-1})
         });
         res.redirect('/admin/children');
+    });
+
+    app.post('/records/submitAttendance', async (req, res) => {
+        let child = await Child.findOne({name: req.body.child}).lean();
+        let qClass = await Class.findOne({name: req.body.class}).lean();
+        let staffMember = await User.findOne({name: req.user.name}).lean();
+
+        let signIn = req.body.signIn.split(":")
+        let signOut = req.body.signOut.split(":")
+        var record = new Attendance();
+        record.id = await (await Attendance.find().lean()).length;
+        record.present = req.body.present == "on" ? true : false;
+        record.date = moment(req.body.date).format('DD-MM-YYYY')
+        record.signInTime = moment(req.body.date).hours(signIn[0]).minutes(signIn[1])
+        record.signOutTime =moment(req.body.date).hours(signOut[0]).minutes(signOut[1])
+        record.staffMember = staffMember;
+        record.class = qClass;
+        record.child = child;
+        record.dailyNotes = req.body.dailyNotes;
+        record.save();
+
+        console.log(req.body)
+
+        res.redirect(`/admin/classAttendance/${qClass.id}`)
     })
 
 }
