@@ -63,6 +63,7 @@ const figlet = require('figlet');
 const Class = require('./models/Class');
 const Child = require('./models/Child');
 const moment = require('moment');
+const Attendance = require('./models/Attendance');
 
 const app = express();
 

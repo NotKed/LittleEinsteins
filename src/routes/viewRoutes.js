@@ -53,7 +53,6 @@ module.exports = function(app, passport) {
         let classes = await Class.find().lean();
         let children = await Child.find().lean();
         let users = await User.find().lean();
-        let attendanceRecords = await Attendance.find().lean();
         let reports = null;
 
         let attendances = {};
@@ -61,16 +60,17 @@ module.exports = function(app, passport) {
         // loop thorugh last 31 days using moment, find attendances for 
         // children in these days, add to 'attendances' for sorting
         // in the attendance view.
-        const currentMoment = moment().subtract(31, 'days');
-        while (currentMoment.isBefore(moment(), 'day')) {
-            attendances[currentMoment.date()] = await Attendance.find({date: currentMoment}).lean();
+        const currentMoment = moment().subtract(30, 'days');
+        while (currentMoment.isSameOrBefore(moment(), 'day')) {
+            attendances[currentMoment.date()] = await Attendance.find({date: currentMoment.format("DD-MM-YYYY")}).lean();
             currentMoment.add(1, 'days');
         }
 
         // we'll use day to show the attendances, day can be changed later on in the html side
         // where the ?day= will change what day of attendance is shown
         // day goes from the current day of the month (ex. 21st) to 31 days before that day (day varies by month)
-        var day = req.query.day ? req.query.day : moment().date()
+        var day = req.query.page ? req.query.page : moment().date();
+
 
         res.render('dashboard/class/classAttendance', { 
             classID: req.params.classID,
@@ -79,8 +79,9 @@ module.exports = function(app, passport) {
             children: children,
             users: users,
             reports: reports,
-            attendances: attendances,
-            day: day
+            attendances: attendances[day],
+            day: day,
+            moment: moment
         });
     })
 
@@ -173,6 +174,6 @@ module.exports = function(app, passport) {
 }
 
 function isAuthenticated(req, res, next) {
-    if(req.isAuthenticated() && req.user.admin) next();
+    if(req.isAuthenticated()) next();
     else res.redirect("/login");
 }

@@ -12,7 +12,7 @@ const Class = require('./Class').schema;
 
 let classAttendanceSchema = new mongoose.Schema({
     present: Boolean,
-    date: Date,
+    date: String,
     signInTime: Date,
     signOutTime: Date,
     staffMember: User,
