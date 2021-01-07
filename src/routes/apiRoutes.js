@@ -214,7 +214,7 @@ module.exports = function (app, passport) {
         record.id = await (await Attendance.find().lean()).length;
         record.present = req.body.present == "on" ? true : false;
         record.date = moment(req.body.date).format('DD-MM-YYYY')
-        if(signIn != null) record.signinTime = moment(req.body.date).hours(signIn[0]).minutes(signIn[1])
+        if(signIn != null) record.signInTime = moment(req.body.date).hours(signIn[0]).minutes(signIn[1])
         if(signOut != null) record.signOutTime = moment(req.body.date).hours(signOut[0]).minutes(signOut[1])
         record.staffMember = staffMember;
         record.class = qClass;
