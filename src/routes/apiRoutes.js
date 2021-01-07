@@ -208,21 +208,19 @@ module.exports = function (app, passport) {
         let qClass = await Class.findOne({name: req.body.class}).lean();
         let staffMember = await User.findOne({name: req.user.name}).lean();
 
-        let signIn = req.body.signIn.split(":")
-        let signOut = req.body.signOut.split(":")
+        let signIn = req.body.signIn ? req.body.signIn.split(":") : nil
+        let signOut = req.body.signOut ? req.body.signOut.split(":") : nil
         var record = new Attendance();
         record.id = await (await Attendance.find().lean()).length;
         record.present = req.body.present == "on" ? true : false;
         record.date = moment(req.body.date).format('DD-MM-YYYY')
-        record.signInTime = moment(req.body.date).hours(signIn[0]).minutes(signIn[1])
-        record.signOutTime =moment(req.body.date).hours(signOut[0]).minutes(signOut[1])
+        if(signIn != nil) record.signinTime = moment(req.body.date).hours(signIn[0]).minutes(signIn[1])
+        if(signOut != nil) record.signOutTime = moment(req.body.date).hours(signOut[0]).minutes(signOut[1])
         record.staffMember = staffMember;
         record.class = qClass;
         record.child = child;
         record.dailyNotes = req.body.dailyNotes;
         record.save();
-
-        console.log(req.body)
 
         res.redirect(`/admin/classAttendance/${qClass.id}`)
     })

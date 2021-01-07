@@ -114,7 +114,6 @@ module.exports = function(app, passport) {
         }
 
         date = date.format("YYYY-MM-DD");
-        console.log(date)
 
         res.render('dashboard/records/newAttendance', { 
             classID: req.query.class,
