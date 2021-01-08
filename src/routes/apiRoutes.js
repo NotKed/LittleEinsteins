@@ -223,7 +223,19 @@ module.exports = function (app, passport) {
         record.save();
 
         res.redirect(`/admin/classAttendance/${qClass.id}`)
-    })
+    });
+
+    app.post('/records/updateAttendance', async (req, res) => {
+        let signIn = req.body.signIn.split(":")
+        let signOut = req.body.signOut.split(":")
+        await Attendance.updateOne({id: req.body.id}, {
+            present: req.body.present == "on" ? true : false,
+            signInTime: moment(req.body.date).hours(signIn[0]).minutes(signIn[1]),
+            signOutTime: moment(req.body.date).hours(signOut[0]).minutes(signOut[1]),
+            dailyNotes: req.body.dailyNotes
+        })
+        res.redirect('back');
+    });
 
 }
 

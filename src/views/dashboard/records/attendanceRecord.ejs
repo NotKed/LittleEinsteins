@@ -30,18 +30,18 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-			<form action="/editClass" method="post">
+			<form action="/records/updateAttendance" method="post">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1>Edit <%= classes[classID].name %> Class</h1>
+							<h1>View Attendance Record</h1>
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                                <li class="breadcrumb-item"><a href="/admin/class/<%= classes[classID].id %>"><%= classes[classID].name %></a></li>
-                                <li class="breadcrumb-item"><a href="/admin/classAttendance/<%= classID %> ">Class Attendance</a></li>
-                                <li class="breadcrumb-item active">Attendance Record</li>
+								<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+								<li class="breadcrumb-item"><a href="/admin/class/<%= classes[record.class.id].id %>"><%= classes[record.class.id].name %></a></li>
+								<li class="breadcrumb-item"><a href="/admin/classAttendance/<%= record.class.id %> ">Class Attendance</a></li>
+								<li class="breadcrumb-item active">Attendance Record</li>
 							</ol>
 						</div>
 					</div>
@@ -54,32 +54,44 @@
 					<div class="col-md-6">
 						<div class="card card-primary">
 							<div class="card-header">
-								<h3 class="card-title">Current Information</h3>
+								<h3 class="card-title">General</h3>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
-									<label for="inputName">ID</label>
-									<p><%= classID %></p>
+									<label for="inputID">ID</label>
+									<input type="text" name="id" class="form-control" id="inputID" value="<%= record.id %>" readonly>
 								</div>
 								<div class="form-group">
-									<label for="inputName">Class Name</label>
-									<p><%= classes[classID].name %></p>
+									<label for="inputChild">Child</label>
+									<input type="text" name="child" class="form-control" id="inputChild" value="<%= record.child.name %>" readonly>
 								</div>
 								<div class="form-group">
-									<label for="inputDescription">Class Description</label>
-									<p><%= classes[classID].description %></p>
+									<label for="inputClass">Class</label>
+									<input type="text" name="class" class="form-control" id="inputClass" value="<%= record.class.name %>" readonly>
 								</div>
 								<div class="form-group">
-									<label for="inputCapacity">Capacity</label>
-									<p><%= classes[classID].capacity %></p>
+									<label for="inputStaff">Date</label>
+									<input type="date" name="date" class="form-control" id="inputName" value="<%= date %>" readonly>
 								</div>
 								<div class="form-group">
-									<label for="inputAge">Class Age Group</label>
-									<p><%= classes[classID].age %></p>
+									<label for="inputPresent">Present</label>
+									<% if (record.present) { %>
+										<input name="present" id="inputPresent" class="form-control" type="checkbox" checked required>
+									<% } else { %>
+										<input name="present" id="inputPresent" class="form-control" type="checkbox" required>
+									<% } %>
 								</div>
 								<div class="form-group">
-									<label for="inputProjectLeader">Training Level</label>
-									<p><%= classes[classID].trainingLevel %></p>
+									<label for="inputSignIn">Sign-in Time</label>
+									<input name="signIn" type="time" id="inputSignIn" class="form-control" value="<%= record.signInTime ? moment(record.signInTime).format("HH:mm") : "" %>">
+								</div>
+								<div class="form-group">
+									<label for="inputSignOut">Sign-out Time</label>
+									<input name="signOut" type="time" id="inputSignOut" class="form-control" value="<%= record.signOutTime ? moment(record.signOutTime).format("HH:mm") : "" %>">
+								</div>
+								<div class="form-group">
+									<label for="inputStaff">Staff Member</label>
+									<input type="text" name="staffMember" class="form-control" id="inputName" value="<%= record.staffMember.name %>" readonly>
 								</div>
 							</div>
 							<!-- /.card-body -->
@@ -87,34 +99,13 @@
 						<!-- /.card -->
 					</div>
 					<div class="col-md-6">
-						<div class="card card-primary">
+						<div class="card card-secondary">
 							<div class="card-header">
-								<h3 class="card-title">Edit</h3>
+								<h3 class="card-title">Daily Notes</h3>
 							</div>
 							<div class="card-body">
 								<div class="form-group">
-									<label for="inputName">ID</label>
-									<input type="text" name="classID" class="form-control" id="inputName" value="<%= classes[classID].id %>" readonly>
-								</div>
-								<div class="form-group">
-									<label for="inputName">Class Name</label>
-									<input name="name" type="text" id="inputName" class="form-control" value="<%= classes[classID].name %>">
-								</div>
-								<div class="form-group">
-									<label for="inputDescription">Class Description</label>
-									<textarea name="description" id="inputDescription" class="form-control" rows="4"><%= classes[classID].description %></textarea>
-								</div>
-								<div class="form-group">
-									<label for="inputCapacity">Capacity</label>
-									<input name="capacity" type="number" id="inputCapacity" class="form-control" value="<%= classes[classID].capacity %>">
-								</div>
-								<div class="form-group">
-									<label for="inputAge">Class Age Group</label>
-									<input name="age" type="number" id="inputAge" class="form-control" value="<%= classes[classID].age %>">
-								</div>
-								<div class="form-group">
-									<label for="inputProjectLeader">Training Level</label>
-									<input name="trainingLevel" type="text" id="inputTrainingLevel" class="form-control" value="<%= classes[classID].trainingLevel %>">
+									<textarea name="dailyNotes" class="form-control" id="inputNotes" rows="4"><%= record.dailyNotes %> </textarea>
 								</div>
 							</div>
 							<!-- /.card-body -->
@@ -124,8 +115,8 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<a href="/admin/class/<%= classes[classID].id %> " class="btn btn-secondary">Cancel</a>
-						<button type="submit" class="btn btn-success float-right">Update Class</button>
+						<a href="/admin/classAttendance/<%= record.class.id %> " class="btn btn-secondary" style="margin: 20px;">Return</a>
+						<button type="submit" class="btn btn-success float-right" style="margin: 20px;">Update Record</button>
 					</div>
 				</div>
 			</form>

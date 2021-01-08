@@ -84,6 +84,26 @@ module.exports = function(app, passport) {
         });
     })
 
+    app.get('/admin/records/attendanceRecord', isAuthenticated, async (req, res) => {
+        let classes = await Class.find().lean();
+        let children = await Child.find().lean();
+        let users = await User.find().lean();
+        let reports = null;
+        let record = await Attendance.findOne({id: req.query.id})
+        let date = moment().format("YYYY-MM-DD");
+
+        res.render('dashboard/records/attendanceRecord', { 
+            user: req.user,
+            classes: classes,
+            children: children,
+            users: users,
+            reports: reports,
+            record: record,
+            date: date,
+            moment: moment
+        });
+    })
+
     app.get('/admin/records/newAttendance', isAuthenticated, async (req, res) => {
         let classes = await Class.find().lean();
         let children = await Child.find().lean();
